@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>swiper animate的插件的使用方法</title>
+</head>
+
+<link href="js/animate.min.css" rel="stylesheet">
+<link rel="stylesheet" href="js/swiper-3.4.1.min.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/swiper-3.4.1.jquery.min.js"></script>
+<script src="js/swiper.animate1.0.2.min.js"></script>
+<body>
+<style>
+	*{padding: 0;margin: 0;}
+	.swiper-slide{width: 100%;position: relative;}
+	.swiper-slide img{display: block;width: 100%;}
+	.swiper-slide .plane{position: absolute;top: 20px;right: 20px;width: 33%;}
+	.swiper-slide .sun{position: absolute;top: 10px;right: 10px;width: 30%;}
+</style>
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			<img src="img/1.jpg" alt="" class="plane ani" swiper-animate-effect="bounceOutDown" swiper-animate-duration="2s" swiper-animate-delay="0.1s">
+			<img src="img/plane.png" alt="">
+		</div>
+		<div class="swiper-slide">
+			<img src="img/sun.png" alt="" class="sun ani" swiper-animate-effect="rotateIn" swiper-animate-duration="3s" swiper-animate-delay="0.1s">
+			<img src="img/2.jpg" alt="">
+		</div>
+	</div>
+	<!-- 分页器 -->
+	<div class="swiper-pagination"></div>
+</div>
+
+</body>
+
+
+
+	<script>
+	var mySwiper = new Swiper ('.swiper-container', {
+		pagination : '.swiper-pagination',
+		onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
+			swiperAnimateCache(swiper); //隐藏动画元素
+			swiperAnimate(swiper); //初始化完成开始动画
+		},
+		onSlideChangeEnd: function(swiper){
+			swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+		}
+	})
+</script>
+
+
+</body>
+</html>
